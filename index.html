@@ -66,8 +66,47 @@
         </tbody>
         <tfoot></tfoot>
       </table>
+    </div> <!--end div for table --> 
+
+<!-- Add train form -->
+<div class="container">
+  <!-- Form must include -->
+  <!-- 1. Basic info (name, number, email etc) -->
+  <!-- 2. Save contact -->
+  <!-- 3. Update Contact -->
+  <!-- 4. Delete Contact -->
+  <!-- CRUD Form -->
+
+  <form method="POST" action="#">
+    <div class="form-group">
+      <label for="trainName">Train Name</label>
+      <input type="text" class="form-control" id="trainName" aria-describedby="trainName">
     </div>
-  </div>
+
+    <div class="form-group">
+      <label for="destination">Destination</label>
+      <input type="text" class="form-control" id="destination" aria-describedby="destination">
+    </div>
+
+    <div class="form-group">
+      <label for="firstTrainTime">First Train Time (HH:mm - Military Time)</label>
+      <input type="time" class="form-control" id="firstTrainTime" aria-describedby="firstTrainTime" placeholder="(xxx) xxx-xxxx">
+    </div>
+            
+    <div class="form-group">
+      <label for="frequency">Frequency</label>
+      <input type="text" class="form-control" id="frequency" aria-describedby="frequency">
+    </div>
+
+    <!-- <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+    <button type="submit" id = "submitForm" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+  </div>  <!--end div of container-->
     
 
     
