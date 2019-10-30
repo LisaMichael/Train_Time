@@ -1,0 +1,23 @@
+#entirePage {
+ 
+width: 789px;
+}
+
+h1 {
+    background-color: brown;
+}
+
+h4 {
+    background-color: blue;
+}
+
+#borderTop {
+    border: 5px solid blue;
+    /* border-block-color: blue; */
+    /* margin-block: blue; */
+    /* margin-left: 5px; */
+}
+
+#borderBottom {
+    border: 5px solid blue;
+}
