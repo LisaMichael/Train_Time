@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Train Time</title>
  <!-- adding reset css file -->
- <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+ <!-- <link href="assets/css/reset.css" rel="stylesheet" type="text/css"> -->
 
  <!-- Added a link to Bootstrap-->
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -17,27 +17,35 @@
 
  <!--local css-->
  <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+<!-- Firebase References -->
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+ <!-- moment.js-->
+ <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
  <!-- adding javascript file -->
- <script type="text/javascript" src="assets/javascript/app.js"></script>
+ <script src="assets/javascript/train.js"></script>
 
 </head>
 <body>
 <div class = "container" id="entirePage">
-    
+    <nav class = "Jumbotron">
     <h1>Anytime is Train Time</h1>  
+    <h5>Choo Choo Chee Chee</h5>
     
-    
- 
+    </nav>
     
     
 
      <!-- Display previously added contacts -->
   <div class="container" id = "borderTop" >
-<h4>Current Train Schedule</h4>
+<p id ="sectionHeader">Current Train Schedule</p>
 
     <div class="row">
       <table class="table">
-        <thead>
+        <thead >
           <tr>
             <th>Train Name</th>
             <th>Destination</th>
@@ -69,7 +77,7 @@
 <!-- Add train form -->
 <div class="container " id = "borderBottom">
 
-  <h4> Add Train</h4>
+  <p id = "sectionHeader"> Add Train</p>
 
   <!-- Form must include -->
   <!-- train name  -->
@@ -111,5 +119,8 @@
 
 </div><!--end div of entire container-->
     
+<body>
+  
+</body>
 </body>
 </html>
