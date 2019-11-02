@@ -14,7 +14,7 @@ $(document).ready( function() {
     firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
 
-  $('#submitForm').on('click', function() {
+  $('#submit').on('click', function() {
 
     event.preventDefault();
 
@@ -50,12 +50,52 @@ database.ref('/newTrain').push(newTrain)
 
   }); // end of submit form 
 
-  console.log("can you seee this ?")
+  
 
 
-dataRef.ref().on("child_added", function (childSnapshot){
+// dataRef.ref().on("child_added", function (childSnapshot){
+
+  database.ref().on("child_added", function(childSnapshot) {
+    // console.log(snapshot.val());
+    let trainName = childSnapshot.val().trainName;
+    let destination = childSnapshot.val().destination;
+    let firstTrainTime = childSnapshot.val().firstTrainTime;
+    let frequency = childSnapshot.val().frequency;
+    // let rate = childSnapshot.val().rate;
+    // let billed = parseInt(childSnapshot.val().billed);
+
+     console.log(childSnapshot.val().trainName);
+     console.log(destination);
+     console.log(firstTrainTime);
+    // console.log(rate);
+  
+    // // // Change the HTML to reflect
+    var tBody = $('#traintable');
+    var tRow = $('<tr>');
+    var trainNameTd = $('<td id="trainName">').text(trainName);
+    var destinationTd = $('<td id="destination">').text(destination);
+    var firstTrainTimeTd = $('<td id="firstTrainTime">').text(firstTrainTime);
+    var frequencyTd = $('<td id="frequency">').text(frequency);
+    // var rateTd = $('<td class="rate">').text('$' + rate);
+    // var billedTd = $('<td>').text('$' + billed);
+
+    // Adds new employee to the DOM
+    tRow.append(trainNameTd, destinationTd, firstTrainTimeTd, frequencyTd);
+    tBody.append(tRow);
+
+
+
+    // $("#name").text(name);
+    // $("#role").text(role);
+    // $("#startDate").text(startDate);
+    // $("#rate").text(rate);
+  
+    // Handle the errors
+  }, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+  });
 	
 	
-});
+// });
 
 }); // end of document.on(ready)
