@@ -40,11 +40,11 @@
     
 
      <!-- Display previously added contacts -->
-  <div class="container" id = "borderTop" >
+  <!-- <div class="container" id = "borderTop" > -->
 <p id ="sectionHeader">Current Train Schedule</p>
 
     <div class="row">
-      <table class="table">
+      <table class="table" id='trainTable'>
         <thead >
           <tr>
             <th>Train Name</th>
@@ -69,13 +69,13 @@
         <tfoot></tfoot>
       </table>
     </div> <!--end div for row --> 
-</div> <!--end div for border top-->  
+<!-- </div> end div for border top   -->
 
 <br> 
 
 
 <!-- Add train form -->
-<div class="container " id = "borderBottom">
+<div class="row" id = "borderBottom">
 
   <p id = "sectionHeader"> Add Train</p>
 
@@ -99,7 +99,7 @@
 
     <div class="form-group">
       <label for="firstTrainTime">First Train Time (HH:mm - Military Time)</label>
-      <input type="text" class="form-control" id="firstTrainTime" aria-describedby="firstTrainTime" placeholder="(xxx) xxx-xxxx">
+      <input type="time" class="form-control" id="firstTrainTime" aria-describedby="firstTrainTime" placeholder="(xxx) xxx-xxxx">
     </div>
             
     <div class="form-group">
@@ -112,7 +112,8 @@
   </form>
 
 
-</div> <!-- end  div for container -->
+</div> 
+<!-- end  div for container -->
 
   
 
