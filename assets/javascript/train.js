@@ -73,15 +73,15 @@ $(document).ready(function () {
     console.log("Inside child added method");
     //console.log(childSnapshot.val());
     var t = childSnapshot.val();
-    console.log("t: "+JSON.stringify(t));
+
+    // console.log("t: "+JSON.stringify(t));
 
     // store everything into a variable
     let tmptrainName = childSnapshot.val().trainName;
     let tmpdestination = childSnapshot.val().destination;
     let tmpfirstTrainTime = childSnapshot.val().firstTrainTime;
     let tmpfrequency = childSnapshot.val().frequency;
-    // let rate = childSnapshot.val().rate;
-    // let billed = parseInt(childSnapshot.val().billed);
+    
 
     console.log(childSnapshot.val().trainName);
     //  console.log(destination);
@@ -93,27 +93,21 @@ $(document).ready(function () {
 
 //create a new row 
 
-    // let newRow = $('<tr>').append(
-    //   $("<td>").text(tmptrainName),
-    //   $("<td>").text(tmpdestination),
-    //   $("<td>").text(tmpfirstTrainTime),
-    //   $("<td>").text(tmpfrequency),
-    // );
+    let newRow = $('<tr>').append(
+      $("<td>").text(tmptrainName),
+      $("<td>").text(tmpdestination),
+      $("<td>").text(tmpfirstTrainTime),
+      $("<td>").text(tmpfrequency),
+    );
 
-  var newRow = "<tr><td>"+tmptrainName+"</td><td>"+tmpdestination+"</td><td>"+tmpfirstTrainTime+"</td><td>"+tmpfrequency+"</td></tr>";
+  // var newRow = "<tr><td>"+tmptrainName+"</td><td>"+tmpdestination+"</td><td>"+tmpfirstTrainTime+"</td><td>"+tmpfrequency+"</td></tr>";
 
-    // Adds new employee to the DOM
-
+    // Adds new train schedule to the DOM
+//this code appends the row to the table
     console.log(newRow);
     $("#train-table > tbody").append(newRow);
-   // $('#train-table').append(newRow);
+   
 
-
-
-    // $("#name").text(name);
-    // $("#role").text(role);
-    // $("#startDate").text(startDate);
-    // $("#rate").text(rate);
 
     // Handle the errors
   }, function (errorObject) {
