@@ -1,23 +1,19 @@
-#entirePage {
- 
-width: 789px;
-}
-
-h1 {
-    background-color: brown;
-}
-
-h4 {
+.jumbotron {
     background-color: blue;
+    color: white;
+    
 }
 
-#borderTop {
-    border: 5px solid blue;
-    /* border-block-color: blue; */
-    /* margin-block: blue; */
-    /* margin-left: 5px; */
-}
 
-#borderBottom {
-    border: 5px solid blue;
-}
+#train-table th,
+    td {
+      display: inline-block;
+      width: 18%; 
+
+      color: blue;
+    }
+
+    .card-header {
+        color: white;
+        background-color: blue;
+    }
