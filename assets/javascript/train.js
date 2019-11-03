@@ -1,4 +1,4 @@
-$(document).ready( function() {
+$(document).ready(function () {
 
   // var firebaseConfig = {
   //   apiKey: "AIzaSyC4N5iN40dKR8LNLwBw63QawtIxptSQQec",
@@ -23,82 +23,90 @@ $(document).ready( function() {
     measurementId: "G-C2YD3HTPKB"
   };
 
-    firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
 
-  $('#add-train-btn').on('click', function() {
+
+  // button for adding train schedule
+  $('#add-train-btn').on('click', function () {
 
     event.preventDefault();
 
-    let trainName = $('#train-name-input').val().trim();
-    let destination = $('#destination-input').val().trim();
-    let firstTrainTime = $('#firstTrainTime-input').val().trim();
+    // Grab user input 
+
+    let tmptrainName = $('#train-name-input').val().trim();
+    let tmpdestination = $('#destination-input').val().trim();
+    let tmpfirstTrainTime = $('#firstTrainTime-input').val().trim();
     // let firstTrainTime = $('#firstTrainTime').moment(Date()).format('H:mm');
     // var frequency = moment().diff(startDate, 'months'); 
-    let frequency = $('#frequency-input').val().trim();
+    let tmpfrequency = $('#frequency-input').val().trim();
     // console.log(moment()); 
     // console.log(moment().diff(startDate, 'months'));  
-    
- 
-    
-
-let newTrain = {
-
-  
-    trainName: trainName,
-    destination: destination, 
-    firstTrainTime: firstTrainTime,
-    frequency: frequency,
-    
-  };  // end of newTrain object
-
-  // clear all of the text boxes 
-
-$(".form-control").val("");
 
 
-database.ref('/newTrain').push(newTrain)
+    // create temporary object for holding train data
+    let tempTrain = {
+      trainName: tmptrainName,
+      destination: tmpdestination,
+      firstTrainTime: tmpfirstTrainTime,
+      frequency: tmpfrequency,
+
+    };  // end of newTrain object
+
+   
+
+    database.ref().push(tempTrain)
+
+     // clear all of the text boxes 
+     $("#train-name-input").val("");
+     $("#destination-input").val("");
+     $("#firstTrainTime-input").val("");
+     $("#frequency-input").val("");
 
 
   }); // end of submit form 
 
-  
 
+//create a firebase event for adding employee to db and row in html
 
-// dataRef.ref().on("child_added", function (childSnapshot){
-
-  database.ref().on("child_added", function(childSnapshot) {
-    console.log(childSnapshot.val());
+  database.ref().on("child_added", function (childSnapshot) {
+    console.log("Inside child added method");
+    //console.log(childSnapshot.val());
+    var t = childSnapshot.val();
+    console.log("t: "+JSON.stringify(t));
 
     // store everything into a variable
-    let trName = childSnapshot.val().trainName;
-    let dest = childSnapshot.val().destination;
-    let fTrainTime = childSnapshot.val().firstTrainTime;
-    let freq = childSnapshot.val().frequency;
+    let tmptrainName = childSnapshot.val().trainName;
+    let tmpdestination = childSnapshot.val().destination;
+    let tmpfirstTrainTime = childSnapshot.val().firstTrainTime;
+    let tmpfrequency = childSnapshot.val().frequency;
     // let rate = childSnapshot.val().rate;
     // let billed = parseInt(childSnapshot.val().billed);
 
-     console.log(trName);
+    console.log(childSnapshot.val().trainName);
     //  console.log(destination);
     //  console.log(firstTrainTime);
     // console.log(rate);
-  
-    // // // Change the HTML to reflect
 
-    // let tBody = $('#traintable');
-    // let newRow = $('<tr>');
-    // var trainNameTd = $('<td id="trainName">').text(trainName);
-    // var destinationTd = $('<td id="destination">').text(destination);
-    // var firstTrainTimeTd = $('<td id="firstTrainTime">').text(firstTrainTime);
-    // var frequencyTd = $('<td id="frequency">').text(frequency);
-    // var rateTd = $('<td class="rate">').text('$' + rate);
-    // var billedTd = $('<td>').text('$' + billed);
+//prettify the traintime
+// var tmpfirstTrainTimePretty = moment.unix(tmpfirstTrainTime).format(HH:mm);
 
-     let newRow = $('<tr>');
+//create a new row 
+
+    // let newRow = $('<tr>').append(
+    //   $("<td>").text(tmptrainName),
+    //   $("<td>").text(tmpdestination),
+    //   $("<td>").text(tmpfirstTrainTime),
+    //   $("<td>").text(tmpfrequency),
+    // );
+
+  var newRow = "<tr><td>"+tmptrainName+"</td><td>"+tmpdestination+"</td><td>"+tmpfirstTrainTime+"</td><td>"+tmpfrequency+"</td></tr>";
 
     // Adds new employee to the DOM
-    newRow.append(trName, dest, fTrainTime, freq);
-    $('#train-table').append(newRow);
+
+    console.log(newRow);
+    $("#train-table > tbody").append(newRow);
+   // $('#train-table').append(newRow);
 
 
 
@@ -106,13 +114,13 @@ database.ref('/newTrain').push(newTrain)
     // $("#role").text(role);
     // $("#startDate").text(startDate);
     // $("#rate").text(rate);
-  
+
     // Handle the errors
-  }, function(errorObject) {
+  }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
   });
-	
-	
-// });
+
+
+  // });
 
 }); // end of document.on(ready)
