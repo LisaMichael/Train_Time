@@ -113,7 +113,7 @@ $(document).ready(function () {
     let nextArrival = currenttime.add(minUntilNext, 'minutes');
     console.log("next arrival" + nextArrival);
     //change the format of nextArrival to a time format
-    let arrivaltime = nextArrival.format("HH:mm");
+    let arrivaltime = nextArrival.format("hh:mm A");
 
     console.log("Arrival Time: " + arrivaltime);
 
