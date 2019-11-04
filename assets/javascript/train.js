@@ -42,6 +42,7 @@ $(document).ready(function () {
     let tmpfirstTrainTime = $('#firstTrainTime-input').val().trim(); 
     let tmpfrequency = $('#frequency-input').val().trim();
     
+    // no fields in input form should be blank
     if(!tmptrainName || !tmpdestination || !tmpfirstTrainTime || !tmpfrequency){
     alert("Please populate all fields!")
   }
