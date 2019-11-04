@@ -16,8 +16,14 @@
   <!-- ========================================= -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+  
+
   <!--local css-->
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+  <!-- time picker for military time -->
+  <script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+<link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
 
   <!-- Firebase References -->
   <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
@@ -90,11 +96,11 @@
             </div>
             <div class="form-group">
               <label for="start-input">First Train Time (HH:mm -military time)</label>
-              <input class="form-control" id="firstTrainTime-input" placeholder="01/08/1989" type="time">
+              <input class="form-control" id="firstTrainTime-input" placeholder="01/08/1989" input type="time"  name="time" />
             </div>
             <div class="form-group">
               <label for="rate-input">Frequency</label>
-              <input class="form-control" id="frequency-input" placeholder="Enter a number" type="number" >
+              <input class="form-control" id="frequency-input" placeholder="MUST Enter a number" type="number" >
             </div>
             <button class="btn btn-primary float-left" id="add-train-btn">Submit</button>
           </form>
