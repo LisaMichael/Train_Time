@@ -84,11 +84,6 @@ $(document).ready(function () {
     let tmpfrequency = childSnapshot.val().frequency;
 
 
-    // console.log(childSnapshot.val().trainName);
-
-
-    //prettify the traintime
-    // var tmpfirstTrainTimePretty = moment.unix(tmpfirstTrainTime).format(HH:mm);
     //convert the First Train Time using moment js
     let firstTrainTimeMoment = moment(tmpfirstTrainTime, "HH:mm");
     console.log("TIME CONVERTED: " + firstTrainTimeMoment);
@@ -100,22 +95,25 @@ $(document).ready(function () {
     // determine difference in number of minutes since last train
     // difference of current time and time of first train time
     let minutesDiff = currenttime.diff(moment(firstTrainTimeMoment), 'minutes');
-    console.log("mintues difference: " + minutesDiff);
+    // console.log("mintues difference: " + minutesDiff);
+
     //determine remaider of minutes left after dividing by frequency
     let minuteLeft = minutesDiff % tmpfrequency;
-    console.log("number of minutes left: " + minuteLeft);
+    // console.log("number of minutes left: " + minuteLeft);
+
     //subtract the remainder of minutes from frequency
     let minUntilNext = tmpfrequency - minuteLeft;
-    console.log("minutes until next: " + minUntilNext);
+    // console.log("minutes until next: " + minUntilNext);
 
 
     //determine next arrival time by adding current time + minutes until next train
     let nextArrival = currenttime.add(minUntilNext, 'minutes');
-    console.log("next arrival" + nextArrival);
-    //change the format of nextArrival to a time format
-    let arrivaltime = nextArrival.format("hh:mm A");
+    // console.log("next arrival" + nextArrival);
 
-    console.log("Arrival Time: " + arrivaltime);
+    //change the format of nextArrival to a time format
+    // use the capital A to make AM/PM display in caps
+    let arrivaltime = nextArrival.format("hh:mm A");
+    // console.log("Arrival Time: " + arrivaltime);
 
 
     //create a new row 
@@ -123,7 +121,6 @@ $(document).ready(function () {
     let newRow = $('<tr>').append(
       $("<td>").text(tmptrainName),
       $("<td>").text(tmpdestination),
-      // $("<td>").text(tmpfirstTrainTime),
       $("<td>").text(tmpfrequency),
       $("<td>").text(arrivaltime),
       $("<td>").text(minUntilNext),
