@@ -28,6 +28,7 @@ $(document).ready(function () {
   firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
 
+ 
 
   // button for adding train schedule
   $('#add-train-btn').on('click', function () {
@@ -38,12 +39,12 @@ $(document).ready(function () {
 
     let tmptrainName = $('#train-name-input').val().trim();
     let tmpdestination = $('#destination-input').val().trim();
-    let tmpfirstTrainTime = $('#firstTrainTime-input').val().trim();
-    // var frequency = moment().diff(startDate, 'months'); 
+    let tmpfirstTrainTime = $('#firstTrainTime-input').val().trim(); 
     let tmpfrequency = $('#frequency-input').val().trim();
-    // console.log(moment()); 
-    // console.log(moment().diff(startDate, 'months'));  
-
+    
+    if(!tmptrainName || !tmpdestination || !tmpfirstTrainTime || !tmpfrequency){
+    alert("Please populate all fields!")
+  }
 
     // create temporary object for holding train data
     let tempTrain = {
@@ -52,7 +53,7 @@ $(document).ready(function () {
       firstTrainTime: tmpfirstTrainTime,
       frequency: tmpfrequency,
 
-    };  // end of newTrain object
+    };  // end of newTrain input
 
 
 
@@ -73,7 +74,7 @@ $(document).ready(function () {
   database.ref().on("child_added", function (childSnapshot) {
 
     //console.log(childSnapshot.val());
-    var t = childSnapshot.val();
+    // var t = childSnapshot.val();
 
     // console.log("t: "+JSON.stringify(t));
 
